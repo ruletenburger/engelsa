@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Энгельса 1–3 · Сдача ОКН — полный цикл</title>
+<style>
+:root{
+  --bg:#0f1420; --panel:#1a2233; --panel2:#222c42; --line:#2e3a55;
+  --txt:#e8edf7; --muted:#9aa7c0;
+  --ok:#2ecc71; --part:#f1c40f; --act:#7b5cff; --ahead:#ff5c5c; --na:#5a6b85;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--txt); line-height:1.5; padding:24px 20px 60px;}
+.wrap{max-width:980px; margin:0 auto;}
+h1{font-size:23px; font-weight:700; margin-bottom:4px;}
+.sub{color:var(--muted); font-size:14px; margin-bottom:18px;}
+.grid-head{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-bottom:20px;}
+.hbox{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px;}
+.hbox .k{font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-bottom:4px;}
+.hbox .v{font-size:14px; font-weight:600;}
+.ctx{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+.cp{background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:13px;}
+.cp b{color:var(--txt);} .cp span{color:var(--muted);}
+h2{font-size:17px; font-weight:700; margin:28px 0 12px; padding-left:10px; border-left:3px solid var(--act);}
+.legend{display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:var(--muted); margin-bottom:16px;}
+.legend span{display:inline-flex; align-items:center; gap:5px;}
+.dot{width:11px; height:11px; border-radius:3px; display:inline-block;}
+.stage{background:var(--panel); border:1px solid var(--line); border-radius:14px; margin-bottom:12px; overflow:hidden; cursor:pointer; transition:.15s;}
+.stage:hover{border-color:var(--info,#4aa3ff);}
+.stage-head{display:flex; align-items:center; gap:12px; padding:14px 16px;}
+.stage-head .rail{width:5px; align-self:stretch; border-radius:3px;}
+.stage-head .name{font-size:16px; font-weight:700; flex:1;}
+.badge{font-size:12px; font-weight:700; padding:4px 11px; border-radius:999px; white-space:nowrap;}
+.bg-ok{background:rgba(46,204,113,.15); color:var(--ok); border:1px solid var(--ok);}
+.bg-part{background:rgba(241,196,15,.15); color:var(--part); border:1px solid var(--part);}
+.bg-act{background:rgba(123,92,255,.18); color:#a08cff; border:1px solid var(--act);}
+.bg-ahead{background:rgba(255,92,92,.15); color:var(--ahead); border:1px solid var(--ahead);}
+.bg-na{background:rgba(90,107,133,.15); color:var(--na); border:1px solid var(--na);}
+.r-ok{background:var(--ok);} .r-part{background:var(--part);} .r-act{background:var(--act);} .r-ahead{background:var(--ahead);} .r-na{background:var(--na);}
+.stage-body{padding:2px 16px 14px 33px;}
+.stage-body ul{list-style:none;}
+.stage-body li{font-size:14px; padding:4px 0; color:var(--txt); position:relative; padding-left:18px;}
+.stage-body li::before{content:"–"; position:absolute; left:0; color:var(--muted);}
+.stage-body .note{font-size:12px; color:var(--muted); margin-top:6px;}
+.detail{display:none; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:18px 0; font-size:14px;}
+.detail .dt{font-size:12px; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:.4px;}
+.detail h3{font-size:17px; margin-bottom:6px;}
+.flags{display:grid; gap:10px;}
+.flag{background:var(--panel); border:1px solid var(--bad,#ff5c5c); border-left:4px solid var(--bad,#ff5c5c); border-radius:10px; padding:12px 14px; font-size:14px;}
+.note-end{color:var(--muted); font-size:12px; margin-top:26px; border-top:1px solid var(--line); padding-top:12px;}
+@media print{ body{background:#fff; color:#000;} .stage,.detail,.flag,.hbox{background:#fff; color:#000; border-color:#ccc;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🏗 Энгельса 1–3 · сдача ОКН — полный цикл</h1>
+  <div class="sub">ФЗ-73 (ст. 45). Объект культурного наследия регионального значения «Орлово-Новосильцевская богадельня (Комплекс с садом и оградой, 3 флигеля)»</div>
+
+  <div class="grid-head">
+    <div class="hbox"><div class="k">Объект</div><div class="v">пр. Энгельса, д. 1, стр. 1/2/3 (лит. А/Б/В)</div></div>
+    <div class="hbox"><div class="k">Орган охраны</div><div class="v">КГИОП Санкт-Петербурга</div></div>
+    <div class="hbox"><div class="k">Рег. № ОКН</div><div class="v">781721206220005 (региональный ансамбль)</div></div>
+    <div class="hbox"><div class="k">Исполнитель</div><div class="v">ООО СК «Галион»</div></div>
+  </div>
+
+  <div class="ctx">
+    <span class="cp"><b>Ключевой орган:</b> <span>КГИОП СПб</span></span>
+    <span class="cp"><b>Вспомогательные:</b> <span>Минкультуры РФ (учётное дело), ЕГРН/Росреестр</span></span>
+    <span class="cp"><b>Лицензированные проектировщики:</b> <span>«Строй Эксперт Махов», «АБ М.И. Яковлева», «Евро-Дом» (МКРФ 05197), Прайдекс</span></span>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--ok)"></i> Есть / Выполнено / Согласовано</span>
+    <span><i class="dot" style="background:var(--part)"></i> Частично</span>
+    <span><i class="dot" style="background:var(--act)"></i> В работе (текущее)</span>
+    <span><i class="dot" style="background:var(--ahead)"></i> Впереди / не начато</span>
+  </div>
+
+  <h2>Конвейер сдачи — где мы находимся</h2>
+  <div id="stages"></div>
+
+  <div class="detail" id="detail"><div class="dt">Детали</div><div id="detailBody">Кликните по этапу, чтобы увидеть детали.</div></div>
+
+  
+
+  <div class="note-end">Собрано агентом «Супер Ирина» 16.11.2026. Сверено с ответом КГИОП от 24.09.2026 № 01-57-25859/26-0-0 и базой объекта. Рабочий снапшот, не юридический документ. Структура — по образцу карты сдачи DL (полный цикл ФЗ-73).</div>
+</div>
+
+<script>
+var STAGES = [
+  {n:"1. Правоустанавливающая база", s:"ok", lbl:"Есть",
+   items:[
+     "Объект в реестре ОКН регионального значения, № 781721206220005 — решение Малого Совета СПб горсовета от 07.09.1993 № 327.",
+     "Предмет охраны утверждён — расп. КГИОП от 03.08.2011 № 10-457 (действует, в 2025 не менялся).",
+     "Охранное обязательство — расп. КГИОП от 17.07.2018 № 07-19-330/18; изменения от 04.01.2025.",
+     "Границы и режим территории — расп. КГИОП от 30.08.2023 № 785-рп (внесены в обязательство 04.01.2025).",
+     "Паспорт ОКН + акты технического состояния (2025)."
+   ],
+   det:"База под охрану собрана полностью: статус ОКН, предмет охраны, обязательство и границы — всё действует."},
+
+  {n:"2. Задание на проектирование", s:"ok", lbl:"Выполнено",
+   items:[
+     "Задания КГИОП на проведение работ по сохранению — 2025, по строениям 1/2/3 (гидроизоляция, ремонт фасадов).",
+     "Ранее: задание КГИОП № 01-52-553/20 от 17.04.2020 (для проекта ЕД-20.01)."
+   ],
+   det:"Задания на сохранение на руках — точка отсчёта для проектировщика есть."},
+
+  {n:"3. Научно-проектная документация", s:"part", lbl:"Частично",
+   items:[
+     "Гостиничный комплекс (шифр 61/03-10-11, «Строй Эксперт Махов» + «АБ М.И. Яковлева») — согласован 2012–2016, отчёт утверждён 07.08.2017.",
+     "ЕД-20.01 (ООО «Евро-Дом», подъёмник МГН + освещение) — согласован 07.07.2021 № 01-26-1264/21-0-1.",
+     "Проект Прайдекс 2025 (ремонт фасадов) — КГИОП НЕ согласован.",
+     "Проект Галион 2026 (клиника 3Z) — в работе."
+   ],
+   det:"По проектированию картина смешанная: старый гостиничный проект доведён до конца, ЕД-20.01 только согласован, Прайдекс не прошёл, текущий проект Галиона в работе."},
+
+  {n:"4. Разрешение на проведение работ", s:"part", lbl:"Частично",
+   items:[
+     "Разрешение КГИОП на подвалы № 01-53-2891/19-0-1 от 26.12.2019 (гидроизоляция).",
+     "По ЕД-20.01 разрешение НЕ выдавалось.",
+     "По Прайдекс 2025 разрешение не выдавалось."
+   ],
+   det:"Есть только разрешение на гидроизоляцию подвалов (2019). На остальные проекты разрешений нет."},
+
+  {n:"5. Производство работ", s:"part", lbl:"Частично",
+   items:[
+     "Работы Юниновой и подрядчиков (СК «СОЮЗ» и др.) 2019–2020 — выполнены в натуре.",
+     "Пробел: акты на закладку/зашивку проёмов частично отсутствуют.",
+     "ЕД-20.01 и Прайдекс 2025 — работы не велись."
+   ],
+   det:"Натура выполнена в 2019–2020, но исполнительная документация неполная: нет части актов на проёмы."},
+
+  {n:"6. Приёмка / отчётная документация", s:"part", lbl:"Частично",
+   items:[
+     "Гостиничный комплекс — отчётная документация утверждена КГИОП 07.08.2017, рег. № 01-26-4396/17.",
+     "ИД 2019–2020 (Юнинова) — в КГИОП не сдана."
+   ],
+   det:"Сдан в КГИОП только гостиничный комплекс. Работы 2019–2020 отчётной документацией не закрыты."},
+
+  {n:"7. Финал", s:"ahead", lbl:"Впереди",
+   items:[
+     "Текущий проект Галион 2026 (клиника 3Z) — до приёмки далеко.",
+     "Цель: пройти согласование, разрешение, производство и приёмку по текущему проекту."
+   ],
+   det:"До финала ещё весь цикл по текущему проекту клиники 3Z."}
+];
+
+function esc(x){ return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function showDetail(title, body){
+  var d = document.getElementById("detail");
+  d.style.display = "block";
+  document.getElementById("detailBody").innerHTML = "<h3>" + esc(title) + "</h3><p>" + esc(body) + "</p>";
+  d.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+function renderStages(){
+  var el = document.getElementById("stages");
+  var html = "";
+  STAGES.forEach(function(st, i){
+    html += '<div class="stage" data-st="'+i+'">'
+         +  '<div class="stage-head"><div class="rail r-'+st.s+'"></div><div class="name">'+esc(st.n)+'</div><div class="badge bg-'+st.s+'">'+esc(st.lbl)+'</div></div>'
+         +  '<div class="stage-body"><ul>';
+    st.items.forEach(function(it){ html += '<li>'+esc(it)+'</li>'; });
+    html += '</ul></div></div>';
+  });
+  el.innerHTML = html;
+}
+
+document.addEventListener("click", function(ev){
+  var c = ev.target.closest("[data-st]");
+  if(c){
+    var st = STAGES[parseInt(c.getAttribute("data-st"),10)];
+    if(st) showDetail(st.n, st.det);
+  }
+});
+
+renderStages();
+</script>
+</body>
+</html>
